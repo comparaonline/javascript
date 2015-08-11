@@ -25,6 +25,7 @@
   1. [Naming Conventions](#naming-conventions)
   1. [Accessors](#accessors)
   1. [Constructors](#constructors)
+  1. [Classes](#classes)
   1. [Events](#events)
   1. [Modules](#modules)
   1. [jQuery](#jquery)
@@ -1233,25 +1234,6 @@
 
   - **Note:** IE8 and below exhibit some quirks with named function expressions.  See [http://kangax.github.io/nfe/](http://kangax.github.io/nfe/) for more info.
 
-  - If your file exports a single class, your filename should be exactly the name of the class.
-    ```javascript
-    // file contents
-    class CheckBox {
-      // ...
-    }
-    module.exports = CheckBox;
-
-    // in some other file
-    // bad
-    var CheckBox = require('./checkBox');
-
-    // bad
-    var CheckBox = require('./check_box');
-
-    // good
-    var CheckBox = require('./CheckBox');
-    ```
-
 **[⬆ back to top](#table-of-contents)**
 
 
@@ -1393,6 +1375,78 @@
 
 **[⬆ back to top](#table-of-contents)**
 
+
+## Classes
+
+- Simple classes should be defined using the anonymous function syntax:
+
+  ```js
+  var ClassName = (
+    function() {
+      // body here ...
+    }
+  );
+  ```
+
+- Variables should be defined in the lowest scope possible:
+
+  ```js
+  // bad
+  var ClassName = (
+    function() {
+      var varTotal = $('#some-id').data('total');
+
+      var squareTotal = function squareTotal() {
+        return varTotal * varTotal;
+      };
+    }
+  );
+
+  // good
+  var ClassName = (
+    function() {
+      var squareTotal = function squareTotal() {
+        var varTotal = $('#some-id').data('total');
+
+        return varTotal * varTotal;
+      };
+    }
+  );
+
+  // bad
+  var ClassName = (
+    function() {
+      var decrTotal = function decrTotal() {
+        var varTotal = $('#some-id').data('total');
+
+        return varTotal - 1;
+      };
+
+      var incrTotal = function incrTotal() {
+        var varTotal = $('#some-id').data('total');
+
+        return varTotal + 1;
+      };
+    }
+  );
+
+  // good
+  var ClassName = (
+    function() {
+      var varTotal = $('#some-id').data('total');
+
+      var decrTotal = function decrTotal() {
+        return varTotal - 1;
+      };
+
+      var incrTotal = function incrTotal() {
+        return varTotal + 1;
+      };
+    }
+  );
+  ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Events
 

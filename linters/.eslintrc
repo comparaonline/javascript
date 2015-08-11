@@ -17,6 +17,7 @@
     "one-var": [2, "never"],                                    // http://eslint.org/docs/rules/one-var
     "no-catch-shadow": 0,                                       // http://eslint.org/docs/rules/no-catch-shadow
     "no-wrap-func": 0,                                          // http://eslint.org/docs/rules/no-wrap-func
-    "no-unused-vars": [1, { "vars": "local" }]                  // http://eslint.org/docs/rules/no-unused-vars
+    "no-unused-vars": [1, { "vars": "local" }],                 // http://eslint.org/docs/rules/no-unused-vars
+    "camelcase": [2, {properties: "never"}]                     // http://eslint.org/docs/rules/camelcase
   }
 }
