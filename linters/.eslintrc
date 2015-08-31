@@ -6,7 +6,7 @@
     // jQuery
     "$": 1,
     "$j": 1,
-    "jQuery", 1
+    "jQuery": 1
   },
   "rules": {
     "quotes": [2, "single", "avoid-escape"],                    // http://eslint.org/docs/rules/quotes
