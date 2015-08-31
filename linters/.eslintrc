@@ -5,7 +5,8 @@
   "globals": {                                                  // http://eslint.org/docs/user-guide/configuring#specifying-globals
     // jQuery
     "$": 1,
-    "$j": 1
+    "$j": 1,
+    "jQuery"
   },
   "rules": {
     "quotes": [2, "single", "avoid-escape"],                    // http://eslint.org/docs/rules/quotes
